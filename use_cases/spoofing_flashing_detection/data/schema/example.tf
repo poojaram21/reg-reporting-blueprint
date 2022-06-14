@@ -1,19 +1,17 @@
 provider "google" {
-  project     = "poojaram-test-proj"
-  region      = "us-central1"
+  project     = var.PROJECT_NAME
+  region      = var.REGION_NAME
 }
 
-resource "google_bigquery_dataset" "gts_dataset_1" {
-  dataset_id                  = "market_data_test"
-  friendly_name               = "test_dataset"
-  description                 = "This is a test dataset for GTS/Strike Project."
+resource "google_bigquery_dataset" "market_data" {
+  dataset_id                  = "market_data"
+  description                 = "This is the dataset holding market data."
   location                    = "US"
-  default_table_expiration_ms = 3600000
 }
 
-resource "google_bigquery_table" "test_table_1" {
-  table_id = "nbbo_test"
-  dataset_id = google_bigquery_dataset.gts_dataset_1.dataset_id
+resource "google_bigquery_table" "nbbo" {
+  table_id = "nbbo"
+  dataset_id = google_bigquery_dataset.market_data.dataset_id
   schema = <<EOF
 [
     {
@@ -62,17 +60,15 @@ resource "google_bigquery_table" "test_table_1" {
 EOF
 }
 
-resource "google_bigquery_dataset" "gts_dataset_2" {
-  dataset_id                  = "private_data_test"
-  friendly_name               = "test_dataset"
-  description                 = "This is a test dataset for GTS/Strike Project."
+resource "google_bigquery_dataset" "private_data" {
+  dataset_id                  = "private_data"
+  description                 = "This is a dataset for your proprietary orders data."
   location                    = "US"
-  default_table_expiration_ms = 3600000
 }
 
-resource "google_bigquery_table" "test_table_2" {
-  table_id = "orders_test"
-  dataset_id = google_bigquery_dataset.gts_dataset_2.dataset_id
+resource "google_bigquery_table" "orders" {
+  table_id = "orders"
+  dataset_id = google_bigquery_dataset.private_data.dataset_id
   schema = <<EOF
 [
     {
