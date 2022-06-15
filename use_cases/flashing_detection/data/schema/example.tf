@@ -62,7 +62,7 @@ EOF
 
 resource "google_bigquery_dataset" "private_data" {
   dataset_id                  = "private_data"
-  description                 = "This is a dataset for your proprietary orders data."
+  description                 = "This is a dataset for your proprietary order data."
   location                    = "US"
 }
 
