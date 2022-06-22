@@ -176,5 +176,3 @@ resource "google_bigquery_table" "orders" {
 ]
 EOF
 }
-
-
