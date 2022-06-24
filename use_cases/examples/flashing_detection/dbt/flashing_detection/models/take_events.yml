@@ -1,6 +1,7 @@
 version: 2
 
 models:
+  &take_events
   - name: take_events
     description: Orders that are filled within 10 seconds of a flashed order
     columns:

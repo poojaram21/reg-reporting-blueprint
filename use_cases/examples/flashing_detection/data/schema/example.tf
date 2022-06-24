@@ -60,15 +60,15 @@ resource "google_bigquery_table" "nbbo" {
 EOF
 }
 
-resource "google_bigquery_dataset" "private_data" {
-  dataset_id                  = "private_data"
+resource "google_bigquery_dataset" "order_data" {
+  dataset_id                  = "order_data"
   description                 = "This is a dataset for your proprietary order data."
   location                    = "US"
 }
 
 resource "google_bigquery_table" "orders" {
   table_id = "orders"
-  dataset_id = google_bigquery_dataset.private_data.dataset_id
+  dataset_id = google_bigquery_dataset.order_data.dataset_id
   schema = <<EOF
 [
     {

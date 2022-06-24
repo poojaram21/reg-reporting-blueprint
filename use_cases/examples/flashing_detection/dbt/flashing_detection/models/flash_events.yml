@@ -1,6 +1,7 @@
 version: 2
 
 models:
+  &flash_events
   - name: flash_events
     description: All short lived orders sent and cancelled within 500ms
     columns:

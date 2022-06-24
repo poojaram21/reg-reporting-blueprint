@@ -45,6 +45,8 @@ export GCS_INGEST_BUCKET=$PROJECT_ID-$GCS_LOCATION-ingest-bucket
 export HOMELOAN_BQ_DEV=homeloan_dev
 export HOMELOAN_BQ_DATA=homeloan_data
 export HOMELOAN_BQ_EXPECTEDRESULTS=homeloan_expectedreresults
+export FLASHING_BQ_MARKET_DATA=market_data
+export FLASHING_BQ_ORDER_DATA=order_data
 
 echo -e "\nYour environment variables have been initialised as follows:"
 echo -e "\tENV_ID                           :" $ENV_ID
@@ -61,3 +63,5 @@ echo -e "\tBQ_LOCATION                      :" $BQ_LOCATION
 echo -e "\tHOMELOAN_BQ_DEV                  :" $HOMELOAN_BQ_DEV 
 echo -e "\tHOMELOAN_BQ_DATA                 :" $HOMELOAN_BQ_DATA
 echo -e "\tHOMELOAN_BQ_EXPECTEDRESULTS      :" $HOMELOAN_BQ_EXPECTEDRESULTS 
+echo -e "\tFLASHING_BQ_MARKET_DATA          :" $FLASHING_BQ_MARKET_DATA
+echo -e "\tFLASHING_BQ_ORDER_DATA           :" $FLASHING_BQ_ORDER_DATA 
