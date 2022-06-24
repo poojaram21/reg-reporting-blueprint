@@ -2,8 +2,8 @@ SELECT
     sent.*,
     TIMESTAMP_DIFF(cancelled.timestamp, sent.timestamp, MILLISECOND) AS flash_order_life_span
   FROM
-    private_data.orders sent,
-    private_data.orders cancelled
+    {{ source('flashing_detection_source_order_data', 'orders') }} as sent,
+    {{ source('flashing_detection_source_order_data', 'orders') }} as cancelled
   WHERE
     1 = 1
     AND sent.trade_date = cancelled.trade_date

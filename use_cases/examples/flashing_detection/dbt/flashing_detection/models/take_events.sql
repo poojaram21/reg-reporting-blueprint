@@ -15,7 +15,7 @@ SELECT
     TIMESTAMP_DIFF(filled.timestamp, flash.timestamp, MILLISECOND) AS sent_to_fill_timespan,
   FROM
     {{ ref('flash_events') }} as flash,
-    private_data.orders filled
+    {{ source('flashing_detection_source_order_data','orders') }} as filled
   WHERE
     1 = 1
     AND flash.trade_date = filled.trade_date

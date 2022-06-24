@@ -5,7 +5,7 @@ SELECT
     MAX(nbbo.timestamp) AS nbbo_time
   FROM 
     {{ ref('take_events') }}, 
-    market_data.nbbo
+    {{ source('flashing_detection_source_market_data', 'nbbo') }} as nbbo
   WHERE 
     nbbo.timestamp < take_timestamp
   GROUP BY 
