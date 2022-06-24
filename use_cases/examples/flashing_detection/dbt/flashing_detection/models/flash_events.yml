@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: flash_events
+    description: All short lived orders sent and cancelled within 500ms
+    columns:
+      - name: trade_date
+        description: Date of order
+        tests:
+          - not_null
+      - name: timestamp
+        description: Order timestamp
+        tests:
+          - not_null
+      - name: trading_model
+        description: #!!TODO
+        tests:
+          - accepted_values:
+              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: account
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: order_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: event
+        description: #!!TODO
+        tests:
+          - accepted_values:
+              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: symbol
+        description: Financial instrument for the order
+        tests:
+          - not_null
+      - name: exchange
+        description: Financial exchange hosting the order
+        tests:
+          - not_null
+          - accepted_values:
+              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: side
+        description: Buy or Sell
+        tests:
+          - not_null
+          - accepted_values:
+              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: size
+        description: Size of order
+        tests:
+          - not_null
+      - name: price
+        description: Price of order
+        tests:
+          - not_null
+      - name: tif
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: prev_size
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: prev_price
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: fill_size
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: fill_price
+        description: #!!TODO
+        tests:
+          - not_null
+      - name: exec_id
+        description: #!!TODO
+        tests:
+          - unique
+          - not_null
+      - name: flash_order_life_span
+        description: Milliseconds for which flash order lived
+        tests:
+          - not_null
