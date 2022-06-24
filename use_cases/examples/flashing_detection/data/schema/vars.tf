@@ -1,4 +1,4 @@
-variable "PROJECT_NAME" {
+variable "PROJECT_ID" {
 	type		= string
 	description	= "The GCP project name to use for your flashing reporting schema"
 }
