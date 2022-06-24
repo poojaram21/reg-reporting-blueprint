@@ -14,7 +14,8 @@ models:
         tests:
           - not_null
       - name: flash_order_id
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - unique
           - not_null
@@ -27,7 +28,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              #!!TODO update valid values
+              values: ['UPDATEME']
       - name: flash_size
         description: Size of flashed order
         tests:
@@ -41,7 +43,8 @@ models:
         tests:
           - not_null
       - name: take_order_id
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - unique
           - not_null
@@ -50,7 +53,8 @@ models:
         tests:
           - not_null
       - name: take_exec_id
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: take_size

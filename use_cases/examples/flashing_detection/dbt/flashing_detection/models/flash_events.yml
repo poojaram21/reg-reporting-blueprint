@@ -14,12 +14,15 @@ models:
         tests:
           - not_null
       - name: trading_model
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - accepted_values:
-              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              #!!TODO
+              values: ['UPDATEME']
       - name: account
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: order_id
@@ -28,10 +31,12 @@ models:
           - unique
           - not_null
       - name: event
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - accepted_values:
-              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              #!!TODO
+              values: ['UPDATEME']
       - name: symbol
         description: Financial instrument for the order
         tests:
@@ -41,13 +46,15 @@ models:
         tests:
           - not_null
           - accepted_values:
-              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              #!!TODO
+              values: ['UPDATEME']
       - name: side
         description: Buy or Sell
         tests:
           - not_null
           - accepted_values:
-              #values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              #!!TODO
+              values: ['UPDATEME']
       - name: size
         description: Size of order
         tests:
@@ -57,27 +64,33 @@ models:
         tests:
           - not_null
       - name: tif
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: prev_size
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: prev_price
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: fill_size
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: fill_price
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - not_null
       - name: exec_id
-        description: #!!TODO
+        #!!TODO
+        description: UPDATEME
         tests:
           - unique
           - not_null
