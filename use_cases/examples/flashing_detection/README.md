@@ -14,8 +14,8 @@ This example contains the following folders:
 ## How to run this example as-is
 
 In order to run this example, first modify (at a minimum) the following properties in [environment-variables.sh](../../../environment-variables.sh):
-* FLASHING_BQ_MARKET_DATA - set this to be the name of the dataset in which you will store market data
-* FLASHING_BQ_ORDER_DATA - set this to be the name of the dataset in which you will store order data
+* TF_VAR_FLASHING_BQ_MARKET_DATA - set this to be the name of the dataset in which you will store market data
+* TF_VAR_FLASHING_BQ_ORDER_DATA - set this to be the name of the dataset in which you will store order data
 * PROJECT_ID - the Google Cloud project in which you will create and store your market data and the flashing detection models. **Note:** By default it will choose the output of `gcloud config get-value project`
 
 Then, [create and export service account credentials](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) for a service account with permissions to create datasets, views, and tables within the specified project.
@@ -28,4 +28,4 @@ Lastly, set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to 
 If you wish to use this solution for your implementation, you may want to start by tailoring the following files to your needs:
 1. [reg-reporting-blueprint/environment-variables.sh](../../../environment-variables.sh) - Contains various environment setup variables subsequently used by Terraform and DBT
 2. [reg-reporting-blueprint/use_cases/examples/flashing_detection/data/schema/example.tf](./data/schema/example.tf) - Contains sample schemata for datasets and tables for market data and orders
-3. reg-reporting-blueprint/use_cases/examples/flashing_detection/dbt/models/*.yml and *.sql - `*.sql` contains the definition of the models that lead us to finding the flashing events, while *.yml defines the description and contraints on the fields therein.
+3. reg-reporting-blueprint/use_cases/examples/flashing_detection/dbt/models/*.yml and *.sql - `*.sql` contains the definition of the models that lead us to finding the flashing events, while `*.yml` defines the description and contraints on the fields therein.
