@@ -4,7 +4,7 @@ provider "google" {
 }
 
 resource "google_bigquery_dataset" "market_data" {
-  dataset_id                  = "market_data"
+  dataset_id                  = var.MARKET_DATA_DATASET
   description                 = "This is the dataset holding market data."
   location                    = "US"
 }
@@ -61,7 +61,7 @@ EOF
 }
 
 resource "google_bigquery_dataset" "order_data" {
-  dataset_id                  = "order_data"
+  dataset_id                  = var.ORDER_DATA_DATASET
   description                 = "This is a dataset for your proprietary order data."
   location                    = "US"
 }
