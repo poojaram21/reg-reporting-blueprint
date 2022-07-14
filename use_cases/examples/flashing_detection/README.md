@@ -11,7 +11,72 @@ This example contains the following folders:
 * `data`: contains an [example schema codified in Terraform](./data/schema/example.tf), as well as a Python script to generate sample data within that schema 
 * `dbt`: contains a DBT project which specifies the source to report transformations
 
+This example have the following objectives:
+- Create infrastructure using terraform
+- Generate sample market and nbbo data using python scripts
+- Load manufactured data into BigQuery
+- Extract regulatory metrics from granular data using BigQuery SQL Analytics
+- Containerize the extraction pipeline 
+- Aggregation of data into reports
+
 ## How to run this example as-is
+
+This example uses the following billable components of Google Cloud:
+
+- BigQuery
+- Cloud Storage
+- Optionally, GKE, Cloud Composer
+
+To generate a cost estimate based on your projected usage, use the pricing calculator.
+When you finish this tutorial, you can avoid continued billing by deleting the resources you created. For more information, see Clean up.
+
+
+## Steps to set up the environment
+
+1. Configure the environment in your google cloud project, following the installation steps 1-10 given [here](https://cloud.google.com/architecture/set-up-regulatory-reporting-architecture-bigquery).
+
+2. Once the setup scripts are executed from the previous step, run the following commands in your cloud shell:
+
+---
+    $ cd use_cases/examples/flashing_detection/data/schema
+
+    $ terraform init -upgrade
+
+    $ terraform plan
+
+    $ terraform apply
+
+---
+
+Type **yes** when you see the confirmation prompt.
+
+To verify that an ingest bucket has been created, in the Google Cloud console, go to the Cloud Storage page and check for a bucket with a name that's similar to the value of PROJECT ID.
+
+3. Go to the BigQuery page and verify that the following datasets have been created:
+
+- market_data
+- order_data
+
+## Upload the sample data
+In this section, you explore the contents of the repository's data and data_load folders, and load sample data to BigQuery.
+
+4. In the Cloud Shell Editor instance, navigate to the data folder in the repository:
+
+---
+    $ cd use_cases/examples/flashing_detection/data/generation
+
+    $ python3 datagen.py
+---
+
+
+5. To verify that the data has been loaded in BigQuery, in the Google Cloud console, go to the BigQuery page and select a table in both the market_data and order_data datasets.
+
+Select the Preview tab for each table, and confirm that each table has data.
+
+6. Once the above steps are completed, run the regulatory reporting pipeline following the steps [here](https://cloud.google.com/architecture/set-up-regulatory-reporting-architecture-bigquery#run_the_regulatory_reporting_pipeline).
+
+
+## Customize the datasets per your requirements
 
 In order to run this example, first modify (at a minimum) the following properties in [environment-variables.sh](../../../environment-variables.sh):
 * TF_VAR_FLASHING_BQ_MARKET_DATA - set this to be the name of the dataset in which you will store market data
@@ -23,9 +88,9 @@ Please consider the principle of least privilege in creating and securing the se
 
 Lastly, set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to the service account credentials keyfile. e.g. `export GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/keyfile.json`
 
-## How to tailor the code to your needs
+## How to tailor the infrastructure code to your needs
 
 If you wish to use this solution for your implementation, you may want to start by tailoring the following files to your needs:
 1. [reg-reporting-blueprint/environment-variables.sh](../../../environment-variables.sh) - Contains various environment setup variables subsequently used by Terraform and DBT
 2. [reg-reporting-blueprint/use_cases/examples/flashing_detection/data/schema/example.tf](./data/schema/example.tf) - Contains sample schemata for datasets and tables for market data and orders
-3. reg-reporting-blueprint/use_cases/examples/flashing_detection/dbt/models/*.yml and *.sql - `*.sql` contains the definition of the models that lead us to finding the flashing events, while `*.yml` defines the description and contraints on the fields therein.
+3. reg-reporting-blueprint/use_cases/examples/flashing_detection/dbt/models/*.yml and *.sql - `*.sql` contains the definition of the models that lead us to finding the flashing events, while `*.yml` defines the description and constraints on the fields therein.
